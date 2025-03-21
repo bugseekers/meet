@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bounty Webinar - Learn Ethical Hacking & Earn Rewards</title>
+    <style>
+        :root {
+            --primary: #4a154b;
+            --secondary: #36b37e;
+            --accent: #ff5630;
+            --light: #f4f5f7;
+            --dark: #172b4d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #6b1d5c);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            /* Removed the clip-path to make the header straight */
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .emoji {
+            font-size: 1.4em;
+            vertical-align: middle;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            flex: 1 1 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-list {
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .topics-list li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .topics-list li:before {
+            content: "🔹";
+            position: absolute;
+            left: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 86, 48, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 86, 48, 0.4);
+        }
+        
+        .details {
+            background-color: var(--light);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .details-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .detail-item {
+            flex: 1 1 200px;
+            max-width: 250px;
+            padding: 20px;
+        }
+        
+        .detail-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .milestone {
+            background: linear-gradient(135deg, #6b1d5c, var(--primary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .milestone h2 {
+            color: white;
+        }
+        
+        .milestone-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonials {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            flex: 1 1 300px;
+            max-width: 350px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: """;
+            font-size: 5rem;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: rgba(74, 21, 75, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card, .testimonial-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 Join Our Exclusive Bug Bounty Webinar! 🐞💰</h1>
+            <p>Want to learn how ethical hackers find security flaws and get rewarded for it? 💻🔍 Whether you're a beginner or an aspiring bug hunter, this webinar will guide you through the essentials of Bug Bounty Hunting—from understanding the basics to earning your first bounty!</p>
+            <a href="https://rzp.io/rzp/P0565eu" class="cta-button">Register Now</a>
+        </div>
+    </header>
+    
+    <section>
+        <div class="container">
+            <h2>What You'll Learn</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Bug Bounty Essentials</h3>
+                    <ul class="feature-list">
+                        <li>What is Bug Bounty?</li>
+                        <li>How to Earn Money & Recognition 💰🏆</li>
+                        <li>Essential Tools & Platforms (HackerOne, Bugcrowd, etc.)</li>
+                        <li>Live Demo on Finding Vulnerabilities</li>
+                        <li>And much more!</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Topics Covered</h3>
+                    <ul class="topics-list">
+                        <li>OWASP Top 10 (SQL Injection, XSS, IDOR, CSRF & More)</li>
+                        <li>Recon Techniques to Find Hidden Targets</li>
+                        <li>Hands-on Vulnerability Discovery</li>
+                        <li>Writing Effective Bug Reports for Maximum Payouts</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Event Details</h3>
+                    <p><strong>📅 Date:</strong> 20 April 2025</p>
+                    <p><strong>⏰ Time:</strong> 5:30 PM onwards</p>
+                    <p><strong>📍 Location:</strong> Live Online Session</p>
+                    <p class="text-center">Don't miss this opportunity to start your journey in Ethical Hacking & Bug Bounties!</p>
+                    <div class="text-center">
+                        <a href="https://rzp.io/rzp/P0565eu" class="cta-button">Register Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="milestone">
+        <div class="container">
+            <h2>🚀 Bug Seekers Milestone Update! 🐞🔒</h2>
+            <div class="milestone-content">
+                <p>In just a few months, 100+ students have joined us on their bug bounty journey! 🎉</p>
+                <p>🔹 We've helped secure top companies like Google, BBC, United Nations, Yatra, Licious, OpenMoney, and more. 🏢💻</p>
+                <p>🔹 Our community has collectively generated over $6,000+ in bounties! 💰💯</p>
+                <p>This is just the beginning! Join us and become part of a growing network of ethical hackers making the internet safer while earning rewards.</p>
+                <a href="https://rzp.io/rzp/P0565eu" class="cta-button">Register Here</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"This webinar was a game-changer! I had zero experience in bug bounty, but after attending, I gained the confidence to start my journey in ethical hacking."</p>
+                    <p class="testimonial-author">– Pandiyan R.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The session was packed with real-world examples and practical tips. Now I know how to approach bug bounty hunting the right way!"</p>
+                    <p class="testimonial-author">– Sridhar K.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I always thought hacking was complicated, but this webinar broke everything down so simply. Highly recommend it for beginners!"</p>
+                    <p class="testimonial-author">– Rahul S.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The webinar helped me understand how ethical hackers work and how to build a strong foundation in cybersecurity. Very informative!"</p>
+                    <p class="testimonial-author">– Priya M.</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The live demo was the best part! Seeing the process in real time gave me the confidence to start learning more about cybersecurity and bug bounty."</p>
+                    <p class="testimonial-author">– Ram P.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container text-center">
+            <h2>Ready to Start Your Bug Bounty Journey?</h2>
+            <p>Don't miss this opportunity to learn from experienced ethical hackers and start earning bounties!</p>
+            <a href="https://rzp.io/rzp/P0565eu" class="cta-button">Register Now</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Bug Seekers. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
